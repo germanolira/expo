@@ -29,6 +29,13 @@ abstract_target 'BareExpoMain' do
     ],
   )
 
+  # Required for expo-image dependencies
+  # TODO: Do this automatically in autolinking (@tsapeta)
+  # pod 'SDWebImage', :modular_headers => true
+  # pod 'SDWebImageWebPCoder', :modular_headers => true
+  # pod 'SDWebImageSVGKitPlugin', :modular_headers => true
+  # pod 'SVGKit', :modular_headers => true
+
   # Flags change depending on the env values.
   flags = get_default_flags()
 

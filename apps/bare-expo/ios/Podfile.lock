@@ -58,12 +58,6 @@ PODS:
   - EXGL (11.4.0):
     - ExpoModulesCore
     - React-jsi
-  - EXImage (0.2.3):
-    - React-Core
-    - SDWebImage (~> 5.0)
-    - SDWebImageSVGKitPlugin (~> 1.3)
-    - SDWebImageWebPCoder (~> 0.8.4)
-    - SVGKit (~> 2.1)
   - EXImageLoader (3.2.0):
     - ExpoModulesCore
     - React-Core
@@ -174,6 +168,13 @@ PODS:
     - ExpoModulesCore
   - ExpoHaptics (11.3.0):
     - ExpoModulesCore
+  - ExpoImage (0.2.3):
+    - ExpoModulesCore
+    - React-Core
+    - SDWebImage (~> 5.0)
+    - SDWebImageSVGKitPlugin (~> 1.3)
+    - SDWebImageWebPCoder (~> 0.8.4)
+    - SVGKit (~> 2.1)
   - ExpoImageManipulator (10.4.0):
     - EXImageLoader
     - ExpoModulesCore
@@ -793,7 +794,6 @@ DEPENDENCIES:
   - EXFirebaseCore (from `../../../packages/expo-firebase-core/ios`)
   - EXFont (from `../../../packages/expo-font/ios`)
   - EXGL (from `../../../packages/expo-gl`)
-  - EXImage (from `../../../node_modules/expo-image`)
   - EXImageLoader (from `../../../packages/expo-image-loader/ios`)
   - EXInAppPurchases (from `../../../packages/expo-in-app-purchases/ios`)
   - EXJSONUtils (from `../../../packages/expo-json-utils/ios`)
@@ -815,6 +815,7 @@ DEPENDENCIES:
   - ExpoClipboard (from `../../../packages/expo-clipboard/ios`)
   - ExpoCrypto (from `../../../packages/expo-crypto/ios`)
   - ExpoHaptics (from `../../../packages/expo-haptics/ios`)
+  - ExpoImage (from `../../../packages/expo-image/ios`)
   - ExpoImageManipulator (from `../../../packages/expo-image-manipulator/ios`)
   - ExpoImagePicker (from `../../../packages/expo-image-picker/ios`)
   - ExpoKeepAwake (from `../../../packages/expo-keep-awake/ios`)
@@ -997,8 +998,6 @@ EXTERNAL SOURCES:
   EXGL:
     inhibit_warnings: false
     :path: "../../../packages/expo-gl"
-  EXImage:
-    :path: "../../../node_modules/expo-image"
   EXImageLoader:
     inhibit_warnings: false
     :path: "../../../packages/expo-image-loader/ios"
@@ -1055,6 +1054,9 @@ EXTERNAL SOURCES:
   ExpoHaptics:
     inhibit_warnings: false
     :path: "../../../packages/expo-haptics/ios"
+  ExpoImage:
+    inhibit_warnings: false
+    :path: "../../../packages/expo-image/ios"
   ExpoImageManipulator:
     inhibit_warnings: false
     :path: "../../../packages/expo-image-manipulator/ios"
@@ -1260,7 +1262,6 @@ SPEC CHECKSUMS:
   EXFirebaseCore: 4e86a77accaa3363b07e483f46eea34417c2bbdb
   EXFont: 49dd9f8454d035d00edec02b2fefab415872d86b
   EXGL: eaf094308ed1a3ea8259b0ceeef41363edf20eb2
-  EXImage: dc8a7ec5389a7184dbffcf02e28b8648ccc0734d
   EXImageLoader: cb886583dae1f3320c72146480c97a3ec71f1e60
   EXInAppPurchases: 86d61b99da4658b29c0c0a9e975b1ca227a2f772
   EXJSONUtils: bb893657b9db536765814e5b1667e4b511933e62
@@ -1280,6 +1281,7 @@ SPEC CHECKSUMS:
   ExpoClipboard: 596aa4a0f894fbdddc985dc3d2e0e7efeb8ca973
   ExpoCrypto: e2678609304ec063a0e36b826a3c2d0f0d7202c0
   ExpoHaptics: 7a9709f4310b577d1dd68d8839b95df1e2419cde
+  ExpoImage: 50301d9951aa69a642595069a6101290fa936443
   ExpoImageManipulator: 7154a74e021bdc08810e54d87adaac947ee3dff8
   ExpoImagePicker: 5935667c6a0b5e6f5ca7c0a09f2f7a40f5ee8be2
   ExpoKeepAwake: 49bcb2ce587a75f876ff0777b80fd6803e6cbb46
@@ -1386,6 +1388,6 @@ SPEC CHECKSUMS:
   Yoga: 043f8eb97345d0171f27fead4d1849cacf0472a5
   ZXingObjC: fdbb269f25dd2032da343e06f10224d62f537bdb
 
-PODFILE CHECKSUM: 41606ed9e3f0ee491d786c833b92124d85867cc3
+PODFILE CHECKSUM: 07f406e56bc62bc2eb7b907145580ba027092166
 
 COCOAPODS: 1.11.2

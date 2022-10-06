@@ -42,6 +42,17 @@ module Expo
             end
 
             podspec_dir_path = Pathname.new(pod.podspec_dir).relative_path_from(project_directory).to_path
+            podspec_file_path = File.join(podspec_dir_path, pod.pod_name + ".podspec")
+            podspec = Pod::Specification.from_file(podspec_file_path)
+
+            if package.has_swift_modules_to_link?
+              podspec.all_dependencies.each { |dependency|
+                unless @target_definition.build_pod_as_module?(dependency.name)
+                  puts "Using modular headers for " << dependency.name.green
+                  @target_definition.set_use_modular_headers_for_pod(dependency.name, true)
+                end
+              }
+            end
 
             pod_options = {
               :path => podspec_dir_path,
@@ -49,8 +60,6 @@ module Expo
             }.merge(global_flags, package.flags)
 
             if tests_only || include_tests
-              podspec_file_path = File.join(podspec_dir_path, pod.pod_name + ".podspec")
-              podspec = Pod::Specification.from_file(podspec_file_path)
               test_specs_names = podspec.test_specs.map { |test_spec|
                 test_spec.name.delete_prefix(podspec.name + "/")
               }
