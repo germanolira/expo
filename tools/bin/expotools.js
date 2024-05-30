@@ -49,21 +49,7 @@ async function maybeRebuildAndRun() {
   // If `yarn.lock` checksum changed, reinstall expotools dependencies.
   if (!state.dependenciesChecksum || state.dependenciesChecksum !== dependenciesChecksum) {
     console.log(' 🧶 Yarning...');
-    const { spawn } = require('child_process');
-    const child = spawn('yarn', ['install'], {
-      shell: true,
-      stdio: 'inherit',
-      cwd: ROOT_PATH,
-    });
-    await new Promise((resolve, reject) => {
-      child.on('exit', (code) => {
-        if (code === 0) {
-          resolve();
-        } else {
-          reject(new Error('Failed to install dependencies.'));
-        }
-      });
-    });
+    await spawnAsync('yarn', ['install']);
   }
 
   // If checksum of source files changed, rebuild TypeScript files.
@@ -72,21 +58,7 @@ async function maybeRebuildAndRun() {
 
     try {
       // Compile TypeScript files into build folder.
-      const { spawn } = require('child_process');
-      const child = spawn('yarn', ['build'], {
-        shell: true,
-        stdio: 'inherit',
-        cwd: ROOT_PATH,
-      });
-      await new Promise((resolve, reject) => {
-        child.on('exit', (code) => {
-          if (code === 0) {
-            resolve();
-          } else {
-            reject(new Error('Failed to build TypeScript files.'));
-          }
-        });
-      });
+      await spawnAsync('yarn', ['run', 'build']);
       state.schema = await getCommandsSchemaAsync();
     } catch (error) {
       console.error(LogModifiers.error(` 💥 Rebuilding failed: ${error.stack}`));
